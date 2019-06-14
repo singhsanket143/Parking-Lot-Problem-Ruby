@@ -9,6 +9,10 @@ class Controller
 
     # This function will create a new parking lot with Capacity amount of Parking slots
     def create_parking_lot(capacity)
+        if (capacity.to_i < 0) 
+            puts "Invalid capacity for the parking lot. Please enter a valid capacity"
+            return
+        end
         @parking_lot_capacity = capacity # Initialize the parking lot with the input capacity
         capacity.to_i.times do |i|
             @parking_slots << ParkingSlot.new(i+1) # Append a new Parking Slot to the overal Parking lot
