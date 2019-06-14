@@ -7,4 +7,3 @@ class Car
 
     attr_accessor :reg_num, :colour, :parking_slot
 end
-  

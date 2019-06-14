@@ -67,4 +67,6 @@ class Controller
         slot = @parking_slots.find{|slot| slot.car.reg_num == reg_num}
         puts slot.nil? ?  'Not found' : slot.slot_num
     end
+
+    attr_accessor :parking_lot_size, :parking_slots
 end
