@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # Class to initialize the whole project
 require_relative 'lib/command/home'
 Dir["./lib/*.rb"].each {|file| require_relative file }

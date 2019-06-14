@@ -16,6 +16,20 @@ Instructions to execute the project:
 ./parking_lot.sh input.txt
 ```
 
+### OR
+
+- Intractive Mode :
+
+```
+./parking_lot
+```
+
+- file input mode
+
+```
+./parking_lot input.txt
+```
+
 ## Ruby command approach :
 
 - Intractive Mode:
