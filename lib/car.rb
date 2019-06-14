@@ -1,3 +1,4 @@
+# Class to control initialization and properties of a Car
 class Car
     #constructor
     def initialize(reg_num, colour)
