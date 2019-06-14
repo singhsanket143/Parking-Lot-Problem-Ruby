@@ -2,6 +2,6 @@
 class Status < Home
 
   def execute(args = [])
-      @controller.status
+      @controller.status_of_parking_lot
   end
 end

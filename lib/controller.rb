@@ -25,7 +25,7 @@ class Controller
             return
         end
         puts "Allocated slot number: #{slot.slot_num}" # If slot is empty then allocate a new slot
-        if @registered_cars[reg_num].nil? # Check if car with given registration number already exist in the registered cars database
+        if not @registered_cars[reg_num].nil? # Check if car with given registration number already exist in the registered cars database
             slot.car = @registered_cars[reg_num] # Make an entry to store the car in the parking slot
             @registered_cars[reg_num].parking_slot = slot # Make an entry to store the slot number corresponding to the current car
         else  # If car is not already registered
@@ -38,6 +38,10 @@ class Controller
 
     # Removes a car from the slot it earlier occupied
     def leave_parking_slot(slot_num)
+        if(slot_num.to_i > @parking_lot_capacity.to_i) 
+            puts "Slot number doesn't exist. Please enter a valid slot to leave"
+            return
+        end
         puts "Slot number #{slot_num} is free"
         @parking_slots[slot_num - 1] = ParkingSlot.new(slot_num) # Remove the entry of the car from the parking slot
     end
@@ -47,7 +51,7 @@ class Controller
         puts "Slot No. \t Registration No. \t Color"
         @parking_slots.each do |slot| # Iterate over all the slots
             unless slot.car.nil? # Check if slot is not empty
-                puts "#{slot.slot_num} \t #{slot.car.reg_num} \t #{slot.car.colour}"
+                puts "#{slot.slot_num} \t\t #{slot.car.reg_num} \t\t #{slot.car.colour}"
             end
         end
     end
@@ -64,7 +68,7 @@ class Controller
     
     # This function prints the slot numbers of all the cars corresponding to a given registration number
     def slot_number_for_registration_number(reg_num)
-        slot = @parking_slots.find{|slot| slot.car.reg_num == reg_num}
+        slot = @parking_slots.find{|slot| (not slot.car.nil? and slot.car.reg_num == reg_num)}
         puts slot.nil? ?  'Not found' : slot.slot_num
     end
 

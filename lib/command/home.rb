@@ -1,5 +1,4 @@
 class Home
-
   # Constructor
   def initialize(controller)
     @controller = controller

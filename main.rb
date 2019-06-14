@@ -1,4 +1,7 @@
 # Class to initialize the whole project
+require_relative 'lib/command/home'
+Dir["./lib/*.rb"].each {|file| require_relative file }
+Dir["./lib/command/*.rb"].each {|file| require file }
 class Main
 
     #C Construtor
@@ -48,3 +51,4 @@ unless file.nil? # If input from command line argument is a file
     Main.new(1).start(file)
 else  # If input fromcommand line argument if not a file
     Main.new(0).start
+end
