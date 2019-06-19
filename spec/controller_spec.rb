@@ -1,14 +1,16 @@
-RSpec.describe Overseer do
+require './spec_helper'
+
+RSpec.describe Controller do
     describe '#create_parking_lot' do
       it 'should create parking lots of provided capacity' do
         controller = Controller.new
   
-        expect(controller.parking_lot_size).to eq(0)
+        expect(controller.parking_lot_capacity).to eq(0)
         expect(controller.parking_slots.length).to eq(0)
   
         controller.create_parking_lot(6)
-  
-        expect(controller.parking_lot_size).to eq(6)
+
+        expect(controller.parking_lot_capacity).to eq(6)
         expect(controller.parking_slots.length).to eq(6)
         expect(controller.parking_slots.first).to be_an_instance_of(ParkingSlot)
       end
@@ -49,7 +51,7 @@ RSpec.describe Overseer do
         controller.create_car_and_park('test-num-A','black')
         expect(controller.parking_slots.last.car).to_not be_nil
   
-        controller.empty_parking_slot(1)
+        controller.leave_parking_slot(1)
         expect(controller.parking_slots.last.car).to be_nil
       end
     end
@@ -79,20 +81,20 @@ RSpec.describe Overseer do
       it 'should fetch and print Not Found when slot_number_for_registration_number is not present' do
         controller = prefilled_controller
   
-        expect(controller).to receive(:puts).with('Not Found')
+        expect(controller).to receive(:puts).with('Not found')
         controller.slot_number_for_registration_number('some-test-num')
       end
   
       it 'should fetch and print the status of the parking lot' do
         controller = prefilled_controller
   
-        expect(controller).to receive(:puts).with('Slot No. Registration No. Colour')
-        expect(controller).to receive(:puts).with("1 \t test-num-A \t black")
-        expect(controller).to receive(:puts).with("2 \t test-num-B \t silver")
-        expect(controller).to receive(:puts).with("3 \t test-num-C \t black")
-        expect(controller).to receive(:puts).with("4 \t test-num-D \t silver")
+        expect(controller).to receive(:puts).with("Slot No. \t Registration No. \t Color")
+        expect(controller).to receive(:puts).with("1 \t\t test-num-A \t\t black")
+        expect(controller).to receive(:puts).with("2 \t\t test-num-B \t\t silver")
+        expect(controller).to receive(:puts).with("3 \t\t test-num-C \t\t black")
+        expect(controller).to receive(:puts).with("4 \t\t test-num-D \t\t silver")
   
-        controller.status
+        controller.status_of_parking_lot
       end
     end
   

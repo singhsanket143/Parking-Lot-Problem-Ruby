@@ -76,5 +76,5 @@ class Controller
         puts slot.nil? ?  'Not found' : slot.slot_num
     end
 
-    attr_accessor :parking_lot_size, :parking_slots
+    attr_accessor :parking_lot_capacity, :parking_slots
 end
