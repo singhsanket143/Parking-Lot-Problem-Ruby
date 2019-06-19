@@ -1,4 +1,4 @@
-require './spec_helper'
+require 'spec_helper'
 
 RSpec.describe Controller do
     describe '#create_parking_lot' do

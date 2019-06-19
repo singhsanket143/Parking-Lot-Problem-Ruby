@@ -2,32 +2,24 @@
 
 Instructions to execute the project:
 
+- Install Dependencies and Run Unit Tests
+
+```
+bin/setup
+```
+
 ## Shell Script approach:
 
 - Intractive Mode :
 
 ```
-./parking_lot.sh
+bin/parking_lot
 ```
 
 - file input mode
 
 ```
-./parking_lot.sh input.txt
-```
-
-### OR
-
-- Intractive Mode :
-
-```
-./parking_lot
-```
-
-- file input mode
-
-```
-./parking_lot input.txt
+bin/parking_lot input.txt
 ```
 
 ## Ruby command approach :
